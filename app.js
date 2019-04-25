@@ -1,5 +1,4 @@
 const express = require('express')
-const faker = require('faker')
 const bodyParser = require('body-parser')
 const expressLayouts = require('express-ejs-layouts')
 const app = express()
@@ -18,25 +17,7 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
   res.render('pages/home')
 })
-app.get('/about', (req, res) => {
-    var users = [{
-        name: faker.name.findName(),
-        email: faker.internet.email(),
-        avatar: 'http://placebear.com/300/300'
-    }, {
-        name: faker.name.findName(),
-        email: faker.internet.email(),
-        avatar: 'http://placebear.com/400/300'
-    }, {
-        name: faker.name.findName(),
-        email: faker.internet.email(),
-        avatar: 'http://placebear.com/500/300'
-    }]
 
-    res.render('pages/about', {
-        usuarios: users
-    })
-})
 
 app.get('/signup', (req, res) => {
   res.render('pages/signup')
