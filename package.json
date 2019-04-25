@@ -1,0 +1,20 @@
+{
+  "name": "plastic-bomb",
+  "version": "1.0.0",
+  "description": "game app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Silvi0",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-ejs-layouts": "^2.5.0",
+    "faker": "^4.1.0",
+    "firebase": "^5.10.0",
+    "nodemon": "^1.18.11"
+  }
+}
