@@ -19,10 +19,6 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/signup', (req, res) => {
-  res.render('pages/signup')
-})
-
 app.get('/game', (req, res) => {
   res.render('pages/game')
 })

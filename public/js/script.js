@@ -1,14 +1,23 @@
+const id = localStorage.getItem("user");
+axios.get("https://databreaker-92ee6.firebaseio.com/users/"+id+".json")
+.then(function(res){
+	let data = JSON.stringify(res.data)
+	localStorage.setItem("userData", data)
+})
+ const userData =  JSON.parse(localStorage.getItem("userData"));
+
 (function(){
-	var game = new Phaser.Game(800,600,Phaser.AUTO,null,{preload:preload,create:create,update:update});
+	var game = new Phaser.Game(1200,800,Phaser.AUTO,null,{preload:preload,create:create,update:update});
 	var platforms,player,keys,stars,globSndStar,txtScore,score = 0;
 	var keyW,keyA,keyD;
 
 
 	function preload(){
-		game.load.image('sky','../img/sky.png');
+
 		game.load.image('diamond','../img/diamond.png');
 		game.load.image('platform','../img/platform.png');
 		game.load.image('star','../img/star.png');
+
 
 		//Carrega o arquivo de áudio
 		game.load.audio('sndStar','../audio/sndStar.mp3');
@@ -27,7 +36,7 @@
 		keyD = game.input.keyboard.addKey(Phaser.Keyboard.D);
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
-		game.add.sprite(0,0,'sky');
+
 
 		platforms = game.add.group();
 		platforms.enableBody = true;
@@ -59,7 +68,8 @@
 		player.animations.add('left',[0,1,2,3],10,true);
 		player.animations.add('right',[5,6,7,8],10,true);
 
-		txtScore = game.add.text(16,16,'SCORE: 0',{fontSize:'32px',fill:'#fff'});
+		txtScore = game.add.text(16,16,'user: '+userData.username,{fontSize:'22px',fill:'#fff'});
+		txtScore = game.add.text(16,50,'score: 0',{fontSize:'22px',fill:'#fff'});
 	}
 
 	function update(){
@@ -92,5 +102,14 @@
 		star.kill();
 		score += 10;
 		txtScore.text = 'SCORE: ' + score;
+
+		var updateScore = {
+			"email": userData.email,
+			"username": userData.username,
+			"password":userData.password,
+		 	"score": score
+		}
+
+		axios.put("https://databreaker-92ee6.firebaseio.com/users/"+id+".json",updateScore)
 	}
 }());

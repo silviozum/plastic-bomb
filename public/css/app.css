@@ -69,18 +69,63 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+a{text-decoration: none;}
 body{
 background-color: #000;
 color:#f2f2f2;
 }
 input{display: block}
+/* canvas{
+  position: absolute;
+  top: 0px;
+  margin-left: -600px;
+  left: 50%;
+} */
 
 /*style*/
+.container{
+  max-width: 720px;
+  display: block;
+  margin: 0 auto;
+}
+.container-fluid{
+  width: 520px;
+  padding: 13px;
+  display: block;
+  margin: 0 auto;
+  margin-left: auto;
+  position: absolute;
+  margin-left: -273px;
+  left: 50%;
+  top: 453px;
+  background-color: rgba(0,0,0,0.8);
+}
 .form-login input{
-  margin-top: 10px;
+  margin-top: 30px;
+  width: 100%;
+  background-color: grey;
+  color: white;
+  border:none;
+  text-indent: 12px;
+  height: 30px;
+  text-transform: capitalize;
 }
 .form-login button{
   margin-top: 15px;
   display: block;
+}
+.main-img{
+  margin: 0 auto;
+  display: block;
+  width: 720px;
+}
+.navbar{ text-align: center;}
+.navbar ul li{
+  margin: 0 20px;
+  display: inline-block;
+}
+.navbar ul li a{
+  color:grey;
+  font-size: 20px;
+  letter-spacing: 2px;
 }
