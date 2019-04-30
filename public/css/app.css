@@ -1,26 +1,3 @@
-
-meyerweb.com
-Main content Navigation links Footer
-
-    Archives
-    CSS
-    Toolbox
-    Writing
-    Speaking
-    Leftovers
-    Feeds
-    About this site
-
-CSS Tools: Reset CSS
-
-The goal of a reset stylesheet is to reduce browser inconsistencies in things like default line heights, margins and font sizes of headings, and so on. The general reasoning behind this was discussed in a May 2007 post, if you're interested. Reset styles quite often appear in CSS frameworks, and the original "meyerweb reset" found its way into Blueprint, among others.
-
-The reset styles given here are intentionally very generic. There isn't any default color or background set for the body element, for example. I don't particularly recommend that you just use this in its unaltered state in your own projects. It should be tweaked, edited, extended, and otherwise tuned to match your specific reset baseline. Fill in your preferred colors for the page, links, and so on.
-
-In other words, this is a starting point, not a self-contained black box of no-touchiness.
-
-If you want to use my reset styles, then feel free! It's all explicitly in the public domain (I have to formally say that or else people ask me about licensing). You can grab a copy of the file to use and tweak as fits you best. If you're more of the copy-and-paste type, or just want an in-page preview of what you'll be getting, here it is.
-
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -53,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+  font-family: 'Bangers', cursive;
 }
 ol, ul {
 	list-style: none;
@@ -68,6 +46,9 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+button{
+  font-family: 'Bangers', cursive;
 }
 a{text-decoration: none;}
 body{
@@ -89,43 +70,82 @@ input{display: block}
   margin: 0 auto;
 }
 .container-fluid{
-  width: 520px;
+  width: 380px;
+  border-radius: 10px;
   padding: 13px;
   display: block;
   margin: 0 auto;
   margin-left: auto;
   position: absolute;
-  margin-left: -273px;
+  margin-left: -200px;
   left: 50%;
   top: 453px;
   background-color: rgba(0,0,0,0.8);
 }
 .form-login input{
-  margin-top: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   width: 100%;
   background-color: grey;
   color: white;
   border:none;
   text-indent: 12px;
   height: 30px;
+  border-radius: 10px;
   text-transform: capitalize;
 }
 .form-login button{
-  margin-top: 15px;
   display: block;
+  float: right;
+  font-size: 30px;
+  color:#f41996;
+  background-color: transparent;
+  border:none;
+  cursor: pointer;
 }
 .main-img{
   margin: 0 auto;
   display: block;
   width: 720px;
 }
-.navbar{ text-align: center;}
-.navbar ul li{
-  margin: 0 20px;
-  display: inline-block;
+#startGame{
+  text-align: center;
+  position: absolute;
+  left: 44%;
+  top: 49%;
+  background-color: rgba(0,0,0,0.8);
+  padding: 20px 100px;
+  border-radius: 10px;
 }
-.navbar ul li a{
-  color:grey;
-  font-size: 20px;
-  letter-spacing: 2px;
+#startGame a{
+  font-size: 63px;
+  font-weight: bold;
+    color: #f41996;
+}
+.jumbotron{
+  height: 893px;
+  max-width:960px;
+  background-image: url("../img/main.jpeg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+[class^="hvr-"] {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.hvr-bounce-in {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+.hvr-bounce-in:hover{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+    transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
 }

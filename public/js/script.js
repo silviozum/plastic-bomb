@@ -37,7 +37,6 @@ axios.get("https://databreaker-92ee6.firebaseio.com/users/"+id+".json")
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
-
 		platforms = game.add.group();
 		platforms.enableBody = true;
 

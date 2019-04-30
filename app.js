@@ -18,6 +18,9 @@ app.get('/', (req, res) => {
   res.render('pages/home')
 })
 
+app.post('/signup',(req,res)=>{
+   console.log(res)
+})
 
 app.get('/game', (req, res) => {
   res.render('pages/game')
