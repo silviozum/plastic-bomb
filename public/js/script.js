@@ -2,7 +2,7 @@ var sockets = io();
 
 
 (function(){
-	var game = new Phaser.Game(1200,800,Phaser.AUTO,null,{preload:preload,create:create,update:update});
+	var game = new Phaser.Game(800,500,Phaser.AUTO,null,{preload:preload,create:create,update:update});
 	var platforms,player,keys,stars,globSndStar,txtScore,score = 0;
 	var keyW,keyA,keyD;
 
@@ -95,11 +95,9 @@ var sockets = io();
 	function collectStar(player,star){
 		//Toca o som
 		globSndStar.play();
-
 		star.kill();
 		score += 10;
 		txtScore.text = 'SCORE: ' + score;
-
 
 		sockets.emit('score', score);
 
