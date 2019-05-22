@@ -1,3 +1,6 @@
+var sockets = io();
+
+
 const id = localStorage.getItem("user");
 axios.get("https://databreaker-92ee6.firebaseio.com/users/"+id+".json")
 .then(function(res){
@@ -44,20 +47,23 @@ axios.get("https://databreaker-92ee6.firebaseio.com/users/"+id+".json")
 			platform.scale.setTo(2,2);
 			platform.body.immovable = true;
 
-			platform = platforms.create(400,400,'platform');
-			platform.body.immovable = true;
+			// platform = platforms.create(400,400,'platform');
+			// platform.body.immovable = true;
 
-			platform = platforms.create(-150,250,'platform');
-			platform.body.immovable = true;
+			// platform = platforms.create(-150,250,'platform');
+			// platform.body.immovable = true;
 
 		stars = game.add.group();
 		stars.enableBody = true;
 
-		for(var i = 0; i < 12; i++){
-			var star = stars.create(i*70,0,'star');
-				star.body.gravity.y = 300;
-				star.body.bounce.y = 0.7 + (Math.random()*0.2);
-		}
+
+		for(var i = 0; i < 10; i++){
+		      for (var j = 0; j < 100; j++) {
+		        var star = stars.create(Math.floor(Math.random() * 800),100,'star');
+		          star.body.gravity.y = 3000;
+		          star.body.bounce.y = 0.7 + (Math.random()*0.2);
+		      }
+		    }
 
 		player = game.add.sprite(50,game.world.height - 150,'dude');
 		game.physics.arcade.enable(player);
@@ -78,11 +84,11 @@ axios.get("https://databreaker-92ee6.firebaseio.com/users/"+id+".json")
 
 		player.body.velocity.x = 0;
 		if(keys.left.isDown || keyA.isDown){
-			player.body.velocity.x = -150;
+			player.body.velocity.x = -250;
 			player.animations.play('left');
 		} else
 		if(keys.right.isDown || keyD.isDown){
-			player.body.velocity.x = 150;
+			player.body.velocity.x = 250;
 			player.animations.play('right');
 		} else {
 			player.animations.stop();
@@ -109,6 +115,7 @@ axios.get("https://databreaker-92ee6.firebaseio.com/users/"+id+".json")
 		 	"score": score
 		}
 
-		axios.put("https://databreaker-92ee6.firebaseio.com/users/"+id+".json",updateScore)
+		sockets.emit('score', score);
+
 	}
 }());
