@@ -50,12 +50,14 @@ app.get('/game/', (req, res) => {
 
 io.on('connection', function(socket){
   socket.on('score', function(score){
-    console.log('score: ' + score);
-    firebase.auth().onAuthStateChanged(user => {
-      firebase.firestore().collection('user').doc(user.uid).update({
-        score:score
-      })
-    });
+    console.log('score: ' + score)
+    let data = {newscore:score}
+    // axios.put('https://databreaker-92ee6.firebaseio.com/ranking/score.json', data ).then(res =>{
+    //   console.log(res)
+    // }).catch(error => {
+    //   console.log(error)
+    // })
+    firebase.database().ref('ranking').update(data)
 
   });
 });
