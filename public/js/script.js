@@ -1,16 +1,8 @@
 var sockets = io();
-
-
-const id = localStorage.getItem("user");
-axios.get("https://databreaker-92ee6.firebaseio.com/users/"+id+".json")
-.then(function(res){
-	let data = JSON.stringify(res.data)
-	localStorage.setItem("userData", data)
-})
- const userData =  JSON.parse(localStorage.getItem("userData"));
+	sockets.emit('score', `0`);
 
 (function(){
-	var game = new Phaser.Game(1200,800,Phaser.AUTO,null,{preload:preload,create:create,update:update});
+	var game = new Phaser.Game(800,500,Phaser.AUTO,null,{preload:preload,create:create,update:update});
 	var platforms,player,keys,stars,globSndStar,txtScore,score = 0;
 	var keyW,keyA,keyD;
 
@@ -58,8 +50,8 @@ axios.get("https://databreaker-92ee6.firebaseio.com/users/"+id+".json")
 
 
 		for(var i = 0; i < 10; i++){
-		      for (var j = 0; j < 100; j++) {
-		        var star = stars.create(Math.floor(Math.random() * 800),100,'star');
+		      for (var j = 0; j < 10; j++) {
+		        var star = stars.create(Math.floor(Math.random() * 500),10,'star');
 		          star.body.gravity.y = 3000;
 		          star.body.bounce.y = 0.7 + (Math.random()*0.2);
 		      }
@@ -73,7 +65,6 @@ axios.get("https://databreaker-92ee6.firebaseio.com/users/"+id+".json")
 		player.animations.add('left',[0,1,2,3],10,true);
 		player.animations.add('right',[5,6,7,8],10,true);
 
-		txtScore = game.add.text(16,16,'user: '+userData.username,{fontSize:'22px',fill:'#fff'});
 		txtScore = game.add.text(16,50,'score: 0',{fontSize:'22px',fill:'#fff'});
 	}
 
@@ -107,13 +98,6 @@ axios.get("https://databreaker-92ee6.firebaseio.com/users/"+id+".json")
 		star.kill();
 		score += 10;
 		txtScore.text = 'SCORE: ' + score;
-
-		var updateScore = {
-			"email": userData.email,
-			"username": userData.username,
-			"password":userData.password,
-		 	"score": score
-		}
 
 		sockets.emit('score', score);
 
